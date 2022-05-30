@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class S3TxtTest extends TestCase
 {
     /**
-     *
-     * @return void
+     * 正常系.
      */
     public function testGeneral(): void
     {
@@ -25,5 +24,17 @@ class S3TxtTest extends TestCase
             ->assertViewHasAll([
                 'data' => $data,
             ]);
+    }
+
+    /**
+     * 異常系.
+     */
+    public function testNoFileS3(): void
+    {
+        Storage::fake('s3');
+
+        $response = $this->get('/s3/txt');
+
+        $response->assertStatus(500);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\S3Controller;
+use App\Http\Controllers\S3TxtController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/s3/txt', [S3Controller::class, 'index']);
+Route::get('/s3/txt', [S3TxtController::class, 'index']);
